@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+local HOSTNAME="${1:?You must provide the hostname}"
+local PORT="${2:-443}"
+
+echo | openssl s_client -showcerts -connect "${HOSTNAME}:${PORT}" | openssl x509 -noout -text
